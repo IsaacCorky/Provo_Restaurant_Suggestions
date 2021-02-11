@@ -22,9 +22,16 @@ namespace Provo_Restaurant_Suggestions.Controllers
         {
             List<string> FavFood = new List<string>();
 
-            foreach(Top5 t in Top5.GetTop5())
+            foreach (Top5 t in Top5.GetTop5())
             {
-                FavFood.Add(string.Format("<th scope=\"row\">{0}</th><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td><a target=\"_blank\" href=\"http://{5}\">{5}</a></td>", t.Rank, t.Name, t.Dish, t.Address, t.Phone, t.Url));
+                if (t.Url == "Coming soon...") // no a tag for coming soon
+                {
+                    FavFood.Add(string.Format("<th scope=\"row\">{0}</th><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td>", t.Rank, t.Name, t.Dish, t.Address, t.Phone, t.Url));
+                }
+                else
+                {
+                    FavFood.Add(string.Format("<th scope=\"row\">{0}</th><td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td><a target=\"_blank\" href=\"http://{5}\">{5}</a></td>", t.Rank, t.Name, t.Dish, t.Address, t.Phone, t.Url));
+                }
             }
 
             return View(FavFood);
@@ -42,10 +49,10 @@ namespace Provo_Restaurant_Suggestions.Controllers
             if (ModelState.IsValid)
             {
                 Repository.AddResponse(RestaurantObject);
-                return View("Confirmed", RestaurantObject);
+                return View("Confirmed"); //confirmation page only if valid
             }
 
-            return View();
+            return View(); // stay on current page if invalid
         }
 
         public IActionResult AllEntries()

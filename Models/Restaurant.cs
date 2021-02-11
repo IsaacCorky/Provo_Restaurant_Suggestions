@@ -9,6 +9,7 @@ namespace Provo_Restaurant_Suggestions.Models
         public string? Name { get; set; } = "Unknown";
 #nullable disable
         [Required]
+        [Display(Name = "Restaurant Name is invalid.")]
         public string RestaurantName { get; set; }
         [Required]
         public string Dish { get; set; }

@@ -18,7 +18,6 @@ namespace Provo_Restaurant_Suggestions.Models
         public string Address { get; set; }
 #nullable enable
         public string? Dish { get; set; } = "It's all tasty!";
-        [Required]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
         ErrorMessage = "Entered phone format is not valid.")]
         public string? Url { get; set; } = "Coming soon...";
@@ -73,10 +72,8 @@ namespace Provo_Restaurant_Suggestions.Models
             {
                 
                 Name = "Thai Hut",
-                Dish = "Massaman Curry",
                 Address = "410 N University Ave",
-                Phone = "801 691 1822",
-                Url = "www.thaihut.restaurant"
+                Phone = "801 691 1822"
             };
 
             return new Top5[] { t1, t2, t3, t4, t5 };
