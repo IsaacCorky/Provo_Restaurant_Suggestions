@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IEnumerable<string>
+
+<div class="text-center">
+    <h1 class="display-4">Top 5 Restaurants in Provo</h1>
+
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Restaurant Name</th>
+            <th scope="col">Favorite Dish</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Website</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (string r in Model)
+        {
+            <tr>
+                @Html.Raw(r)
+            </tr>
+        }
+    </tbody>
+</table>
+

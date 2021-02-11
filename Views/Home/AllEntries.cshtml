@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "All Restaurants";
+}
+
+@model IEnumerable<Provo_Restaurant_Suggestions.Models.Restaurant>
+
+<div class="text-center">
+    <div class="container-fluid">
+        <h1>@ViewData["Title"]</h1>
+        <h2>Here is the list of all restaurants:</h2>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Restaurant Name</th>
+                    <th scope="col">Favorite Dish</th>
+                    <th scope="col">Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Provo_Restaurant_Suggestions.Models.Restaurant r in Model)
+                {
+                    <tr>
+                        <td>@r.Name</td>
+                        <td>@r.RestaurantName</td>
+                        <td>@r.Dish</td>
+                        <td>@r.Phone</td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <div>
+            <a asp-action="Submit">Add Another Entry</a><br />
+            <a asp-action="Index">Back Home</a>
+        </div>
+    </div>
+</div>
